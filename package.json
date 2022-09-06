@@ -1,0 +1,10 @@
+{
+  "name": "tarot_color",
+  "version": "0.1.0",
+  "description": "keyword based color palette generator",
+  "main": "index.js",
+  "repository": "git@github.com:rynmgdlno/tarot_color.git",
+  "author": "Ryan Magdaleno <ryannmagdaleno@icloud.com>",
+  "license": "MIT",
+  "private": true
+}
