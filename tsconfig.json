@@ -2,13 +2,16 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "jsx": "react",
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "lib": [
       "dom",
       "ES5"
     ],
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
     "sourceMap": true,
     "target": "ES5",
   },

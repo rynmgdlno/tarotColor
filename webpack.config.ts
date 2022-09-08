@@ -1,7 +1,10 @@
-const prod = process.env.NODE_ENV === 'production';
+/* global process __dirname*/
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+import Dotenv from 'dotenv-webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+
+const prod = process.env.NODE_ENV === 'production';
 
 module.exports = {
   mode: prod ? 'production' : 'development',
@@ -26,15 +29,16 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader"
+          'style-loader',
+          'css-loader',
+          'sass-loader'
         ]
       }
     ]
   },
   devtool: prod ? undefined : 'source-map',
   plugins: [
+    new Dotenv(),
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),

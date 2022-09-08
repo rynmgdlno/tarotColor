@@ -1,7 +1,16 @@
 import React from 'react';
+import { useAppDispatch, useAppSelector } from '../redux';
+import { decrement, increment } from '../redux/tempSlice';
+
 import styles from './app.module.scss';
 
+export const testFunc = (a: number, b: number) => {
+  return a + b;
+}
+
 function App() {
+  const dispatch = useAppDispatch();
+  const val: number = useAppSelector((state) => state.example.value);
   return (
     <div className={styles.root}>
       <div className={styles.hello}>
@@ -23,8 +32,7 @@ function App() {
           Cypress needs to be initialized with <code>yarn cypress</code>
         </p>
         <p>
-          For further Cypress configuration{' '}
-          <a href="https://learntdd.in/react/">see here</a>
+          For further Cypress configuration <a href='https://learntdd.in/react/'>see here</a>
         </p>
         <hr />
         <h4>Jest:</h4>
@@ -33,28 +41,29 @@ function App() {
         </p>
         <p>
           For further Jest configuration{' '}
-          <a href="https://blog.logrocket.com/testing-typescript-apps-using-jest/">
-            see here
-          </a>
+          <a href='https://blog.logrocket.com/testing-typescript-apps-using-jest/'>see here</a>
         </p>
         <h4>Redux Toolkit:</h4>
         <p>
-          Initial store is setup in <code>/redux/index.ts</code> with an example
-          slice file <code>tempSlice.ts</code>
+          Initial store is setup in <code>/redux/index.ts</code> with an example slice file{' '}
+          <code>tempSlice.ts</code>
         </p>
         <p>
           For Redux Toolkit & TypeScript info{' '}
-          <a href="https://redux-toolkit.js.org/usage/usage-with-typescript">
-            see here
-          </a>
+          <a href='https://redux-toolkit.js.org/usage/usage-with-typescript'>see here</a>
         </p>
         <hr />
         <h4>Config:</h4>
         <p>
-          Settings for WebPack, ESLint, and Prettier live in{' '}
-          <code>webpack.config.js</code>, <code>.eslintrc.js</code>, and{' '}
-          <code>.prettierrc</code>, respectively.
+          Settings for WebPack, ESLint, and Prettier live in <code>webpack.config.js</code>,{' '}
+          <code>.eslintrc.js</code>, and <code>.prettierrc</code>, respectively.
         </p>
+      </div>
+      <div className={styles.counter}>
+        <p>Counter</p>
+        <p>{val}</p>
+        <button onClick={() => dispatch(increment())}>increment</button>
+        <button onClick={() => dispatch(decrement())}>decrement</button>
       </div>
     </div>
   );
