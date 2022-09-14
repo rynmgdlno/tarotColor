@@ -1,19 +1,27 @@
 {
   "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": ".",
     "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "module": "commonjs",
-    "moduleResolution": "node",
     "lib": [
       "dom",
       "ES5"
     ],
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
     "noImplicitReturns": true,
     "noUnusedLocals": true,
+    "paths": {
+      "utils": [
+        "src/utils"
+      ]
+    },
+    "resolveJsonModule": true,
     "sourceMap": true,
-    "target": "ES5",
+    "strict": true,
+    "target": "ES5"
   },
   "exclude": [
     "node_modules"

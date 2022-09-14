@@ -1,72 +1,53 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../redux';
-import { decrement, increment } from '../redux/tempSlice';
+import { Button } from '../src/components/button';
+import { useAppDispatch, useAppSelector } from './redux';
+import { toggle } from '../src/redux/UI/modals/splashSlice';
+// import { decrement, increment } from './redux/tempSlice';
 
 import styles from './app.module.scss';
 
 export const testFunc = (a: number, b: number) => {
   return a + b;
-}
+};
 
 function App() {
-  const dispatch = useAppDispatch();
-  const val: number = useAppSelector((state) => state.example.value);
+  // const val: number = useAppSelector((state) => state.example.value);
   return (
     <div className={styles.root}>
-      <div className={styles.hello}>
-        <h3>Personal React Starter Template</h3>
-        <h4>Configured With:</h4>
-        <ul>
-          <li>React 18</li>
-          <li>Redux Toolkit</li>
-          <li>TypeScript</li>
-          <li>ESLint & Prettier</li>
-          <li>Jest for Unit and Integration Tests</li>
-          <li>Cypress for E2E Tests</li>
-          <li>SASS</li>
-          <li>Minimal Custom WebPack Config</li>
-        </ul>
-        <hr />
-        <h4>Cypress:</h4>
-        <p>
-          Cypress needs to be initialized with <code>yarn cypress</code>
-        </p>
-        <p>
-          For further Cypress configuration <a href='https://learntdd.in/react/'>see here</a>
-        </p>
-        <hr />
-        <h4>Jest:</h4>
-        <p>
-          To run tests: <code>yarn test</code>
-        </p>
-        <p>
-          For further Jest configuration{' '}
-          <a href='https://blog.logrocket.com/testing-typescript-apps-using-jest/'>see here</a>
-        </p>
-        <h4>Redux Toolkit:</h4>
-        <p>
-          Initial store is setup in <code>/redux/index.ts</code> with an example slice file{' '}
-          <code>tempSlice.ts</code>
-        </p>
-        <p>
-          For Redux Toolkit & TypeScript info{' '}
-          <a href='https://redux-toolkit.js.org/usage/usage-with-typescript'>see here</a>
-        </p>
-        <hr />
-        <h4>Config:</h4>
-        <p>
-          Settings for WebPack, ESLint, and Prettier live in <code>webpack.config.js</code>,{' '}
-          <code>.eslintrc.js</code>, and <code>.prettierrc</code>, respectively.
-        </p>
-      </div>
-      <div className={styles.counter}>
-        <p>Counter</p>
-        <p>{val}</p>
-        <button onClick={() => dispatch(increment())}>increment</button>
-        <button onClick={() => dispatch(decrement())}>decrement</button>
-      </div>
+      <Splash />
     </div>
   );
 }
 
 export default App;
+
+const Splash = () => {
+  const dispatch = useAppDispatch();
+  const toggled = useAppSelector(
+    (state) => state.ui.modals.splashModal.toggled
+  );
+  const splashClass = toggled
+    ? `${styles.splash} ${styles.open}`
+    : `${styles.splash} ${styles.closed}`;
+
+  return (
+    <div className={splashClass}>
+      <h1>
+        Welcome to <span>Tarot</span>
+      </h1>
+      <h4>The Keyword Based Color Palette Generator</h4>
+      <p>
+        Enter a search word or short phrase and hit enter to generate an
+        infinite number of palettes.
+      </p>
+      <p>
+        Swipe left to right or use the arrow keys to browse through the results.
+      </p>
+      <p>Tap or click an individual color to adjust its RGB values.</p>
+      <p>Create an account to save palettes and access them later.</p>
+      <Button className="splashButton" onClick={() => dispatch(toggle())}>
+        <h2>Click here to get started!</h2>
+      </Button>
+    </div>
+  );
+};

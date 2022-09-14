@@ -3,6 +3,7 @@
 import Dotenv from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 
 const prod = process.env.NODE_ENV === 'production';
 
@@ -10,7 +11,7 @@ module.exports = {
   mode: prod ? 'production' : 'development',
   entry: './src/index.tsx',
   output: {
-    path: __dirname + '/dist/',
+    path: __dirname + '/dist/'
   },
   module: {
     rules: [
@@ -18,21 +19,17 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         resolve: {
-          extensions: ['.ts', '.tsx', '.js', '.json'],
+          extensions: ['.ts', '.tsx', '.js', '.json']
         },
-        use: 'ts-loader',
+        use: 'ts-loader'
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
@@ -40,8 +37,15 @@ module.exports = {
   plugins: [
     new Dotenv(),
     new HtmlWebpackPlugin({
-      template: 'index.html',
+      template: 'index.html'
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin()
   ],
+  resolve: {
+    plugins: [
+      new TsconfigPathsPlugin({
+        configFile: './tsconfig.json'
+      })
+    ]
+  }
 };

@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { TypedUseSelectorHook } from 'react-redux';
 import logger from 'redux-logger';
 
-import temp from './tempSlice';
+import UI from './UI'
+
 const env = process.env.ENV;
 
 const store = configureStore({
   reducer: {
-    example: temp
+    ui: UI
   },
   middleware: (getDefaultMiddleware) =>
     env !== 'dev'
