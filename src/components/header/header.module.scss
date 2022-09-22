@@ -1,0 +1,11 @@
+.header {
+  border: 1px solid red;
+
+  position: relative;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  z-index: 8;
+}

@@ -1,0 +1,42 @@
+.splash {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: calc(var(--vh, 1vh) * 100);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: left var(--animation-time) ease-in-out;
+  background-color: white;
+  z-index: 9;
+
+  .content {
+    padding: 2rem;
+
+    p {
+      max-width: 60%;
+      margin-left: 1rem;
+      // background-color: var(--button-hover-color);
+    }
+    
+    .link {
+      text-decoration: none;
+      h2 {
+        color: #5db4a4;
+      }
+    }
+    
+    span {
+      font-family: 'Dancing Script', cursive;
+    }
+  }
+
+  &.open {
+    left: 0;
+  }
+
+  &.closed {
+    left: -100vw;
+  }
+}

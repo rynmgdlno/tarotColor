@@ -1,7 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// eslint-disable-next-line no-duplicate-imports
-// import type { PayloadAction } from '@reduxjs/toolkit';
-// import type { RootState } from './index';
 
 interface SplashState {
   toggled: boolean;
@@ -9,16 +6,16 @@ interface SplashState {
 
 const initialState: SplashState = { toggled: true };
 
-export const tempSlice = createSlice({
-  name: 'temp',
+export const splashSlice = createSlice({
+  name: 'splash',
   initialState,
   reducers: { 
-    toggle: (state) => {
+    toggleSplash: (state) => {
       state.toggled = !state.toggled;
     }
   }
 })
 
-export const { toggle } = tempSlice.actions;
+export const { toggleSplash } = splashSlice.actions;
 
-export default tempSlice.reducer
+export default splashSlice.reducer

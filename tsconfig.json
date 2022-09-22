@@ -14,8 +14,26 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "paths": {
-      "utils": [
+      "@actions": [
+        "src/redux/actions"
+      ],
+      "@components": [
+        "src/components"
+      ],
+      "@redux": [
+        "src/redux"
+      ],
+      "@svg": [
+        "src/components/svg"
+      ],
+      "@tarot": [
+        "src/components/tarot"
+      ],
+      "@utils": [
         "src/utils"
+      ],
+      "@views": [
+        "src/views"
       ]
     },
     "resolveJsonModule": true,
