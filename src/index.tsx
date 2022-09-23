@@ -7,7 +7,7 @@ import store from '@redux';
 import App from './app';
 
 import 'normalize.css';
-import './globals.css';
+import './globals/globals.css'
 
 const container = document.getElementById('app-root');
 // todo: check if this has been fixed:

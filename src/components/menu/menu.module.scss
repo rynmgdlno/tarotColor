@@ -1,0 +1,20 @@
+.menu {
+  position: fixed;
+  width: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: var(--bg-color-main);
+  z-index: 99;
+  transition: right var(--animation-time) ease-in-out;
+  gap: 1rem;
+  margin-top: .5rem;
+
+  &.closed {
+    right: -54px;
+  }
+
+  &.open {
+    right: 0;
+  }
+}

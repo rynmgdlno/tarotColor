@@ -1,5 +1,6 @@
-import { toggleSplash } from './UI/modals/splashSlice'
+import { toggleMenu, toggleSplash } from './UI/navigation/navigationSlice'
 
 export {
+  toggleMenu,
   toggleSplash
 }

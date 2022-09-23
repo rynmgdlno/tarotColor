@@ -1,11 +1,29 @@
-.header {
-  border: 1px solid red;
 
+.header {
   position: relative;
   height: 54px;
   display: flex;
+  padding: 0;
   align-items: center;
   justify-content: space-between;
-
   z-index: 8;
+  
+  .searchIcon {
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: auto;
+    margin-left: .4rem;
+  }
+
+  h1 {
+    margin-left: 15px;
+    margin-left: auto;
+    margin-right: 10px;
+    transition: all var(--animation-time) ease-in-out;
+    font-family: 'Dancing Script', cursive;
+    color: var(--text-color-main);
+    opacity: .7;
+  }
 }

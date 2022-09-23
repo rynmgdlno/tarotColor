@@ -2,9 +2,6 @@
   width: 100vw;
 
   .main {
-
-    .childContainer {
-      height: calc((var(--vh, 1vh) * 100) - 54px);
-    }
+    height: calc((var(--vh, 1vh) * 100) - 54px);
   }
 }
