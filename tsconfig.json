@@ -29,6 +29,9 @@
       "@tarot": [
         "src/components/tarot"
       ],
+      "@types": [
+        "src/globals/types.ts"
+      ],
       "@utils": [
         "src/utils"
       ],

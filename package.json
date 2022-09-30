@@ -12,7 +12,7 @@
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json}' --config ./.prettierrc",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx,json} --no-error-on-unmatched-pattern",
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}",
-    "start": "webpack server --port 3000",
+    "start": "webpack server --port 3001",
     "test": "jest",
     "watch": "jest --watch",
     "cypress": "open cypress"

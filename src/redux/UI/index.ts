@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
 import navigation from './navigation/navigationSlice';
-
-// import modals from './modals'
+import paletteEditor from './paletteEditor.slice';
 
 export default combineReducers({
-  // modals,
   navigation,
+  paletteEditor
 })
