@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '@redux';
-import { toggleMenu } from '../../redux/UI/navigation/navigationSlice';
+import { setActiveEditor, toggleMenu } from '@actions';
 
 import Hamburger from 'hamburger-react';
 
@@ -16,9 +16,16 @@ type Props = {
 export const MenuButton = ({ fillColor }: Props) => {
   const dispatch = useAppDispatch();
   const menuToggled = useAppSelector((state => state.ui.navigation.menuOpen))
+  const activeEditor = useAppSelector((state) => state.ui.paletteEditor.activeEditor)
 
   const handleMenuToggle = () => {
     dispatch(toggleMenu())
+    if (activeEditor !== null && [0,1,2,3,4].includes(activeEditor)) {
+      dispatch(setActiveEditor(null))
+    }
+    // todo: handle user modal
+    // todo: handle palettes modal
+    // todo: handle save modal
   }
 
 
