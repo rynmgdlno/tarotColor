@@ -43,6 +43,7 @@ export const ChannelSlider = ({
         name={channelName}
         value={value}
         onChange={onSlider}
+        style={{ backgroundColor: foreColor }}
       />
     </div>
   );
