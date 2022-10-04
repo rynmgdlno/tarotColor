@@ -1,30 +1,63 @@
 import React from 'react';
-import { ColorValue } from '@types';
+import { useAppDispatch, useAppSelector } from '@redux';
+import { setActiveEditor, toggleMenu } from '@actions';
+import { getContrastingColor, getHex } from '@utils';
+
+import { RGBSet } from '@types';
+
 import styles from './color.module.scss';
 
-type rgbSet = {
-  r: ColorValue,
-  g: ColorValue,
-  b: ColorValue,
-}
-
 type ColorProps = {
-  children: React.ReactNode;
-  className: string | undefined;
-  rgb: rgbSet
+  id: number;
+  rgb: RGBSet;
 };
 
 export const Color = ({
-  children,
-  className,
+  id,
   rgb
 }: ColorProps): React.ReactElement => {
+  const dispatch = useAppDispatch();
+  const currentEditor = useAppSelector(
+    (state) => state.ui.paletteEditor.activeEditor
+  );
+  const menuOpen = useAppSelector(
+    (state) => state.ui.navigation.menuOpen
+  );
   const { r, g, b } = rgb;
-  const colorStyle = { backgroundColor: `rgb(${r}, ${g}, ${b})` }
+  const colorStyle = { backgroundColor: `rgb(${r}, ${g}, ${b})` };
+  const hex = getHex({ r, g, b });
+  const foreColor = getContrastingColor({ r, g, b });
+
+  const toggleEditor = (id: number): void => {
+    dispatch(setActiveEditor(currentEditor === id ? null : id));
+    if (menuOpen) dispatch(toggleMenu());
+    // todo: hide search field
+  };
+
+  const colorClass =
+    currentEditor === id
+      ? `${styles.color} ${styles.editorOpen} ${styles.selected}`
+      : currentEditor !== null
+      ? `${styles.color} ${styles.editorOpen}`
+      : `${styles.color}`;
 
   return (
-    <div className={className && styles[className]} style={colorStyle}>
-      {children}
+    <div
+      className={colorClass}
+      style={colorStyle}
+      onClick={() => toggleEditor(id)}
+    >
+      {currentEditor === id && (
+        <div className={styles.activeColor}>
+          <span className={styles.hex} style={{ color: foreColor }}>
+            {hex}
+          </span>
+          <div
+            className={styles.indicator}
+            style={{ backgroundColor: foreColor }}
+          />
+        </div>
+      )}
     </div>
   );
 };

@@ -1,16 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { SingleColor } from '@types';
-import { initColor } from './initColor';
+import { ColorObj } from '@types';
+import { getRandomColorObj } from '@utils';
 
 type NavigationState = {
-  isEditorOpen: boolean;
-  paletteData: SingleColor[];
+  activeEditor: number | null;
+  paletteData: ColorObj[];
 }
 
 const initialState: NavigationState = { 
-  isEditorOpen: false,
-  paletteData: initColor
+  activeEditor: null,
+  paletteData: getRandomColorObj()
 };
 
 export const paletteEditorSlice = createSlice({
@@ -20,12 +20,12 @@ export const paletteEditorSlice = createSlice({
     setPaletteData: (state, action) => {
       state.paletteData = action.payload
     },
-    toggleEditor: (state) => {
-      state.isEditorOpen = !state.isEditorOpen;
+    setActiveEditor: (state, action) => {
+      state.activeEditor = action.payload;
     },
   }
 })
 
-export const { setPaletteData, toggleEditor } = paletteEditorSlice.actions;
+export const { setPaletteData, setActiveEditor } = paletteEditorSlice.actions;
 
 export default paletteEditorSlice.reducer

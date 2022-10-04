@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { SingleColor } from '@types';
+import { ColorObj } from '@types';
 
-export type Palette = SingleColor[]
+export type Palette = ColorObj[]
 
 type APIState = {
   isLoading: boolean;

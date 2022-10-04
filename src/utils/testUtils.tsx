@@ -8,8 +8,6 @@ import { Provider } from 'react-redux';
 
 import store from '../redux';
 
-// todo: ignore this file in jest.config?
-
 type Props = {
   children: ReactNode;
 };
