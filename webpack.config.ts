@@ -37,7 +37,8 @@ module.exports = {
   plugins: [
     new Dotenv(),
     new HtmlWebpackPlugin({
-      template: 'index.html'
+      template: 'index.html',
+      manifest: './public/manifest.json'
     }),
     new MiniCssExtractPlugin()
   ],

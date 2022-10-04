@@ -1,5 +1,9 @@
-import { toggleSplash } from './UI/modals/splashSlice'
+import { toggleMenu, toggleSplash } from './UI/navigation/navigationSlice';
+import { setPaletteData, setActiveEditor } from './UI/paletteEditor.slice';
 
 export {
-  toggleSplash
+  setActiveEditor,
+  setPaletteData,
+  toggleMenu,
+  toggleSplash,
 }

@@ -8,7 +8,7 @@ import styles from './splash.module.scss'
 export const Splash = () => {
   const dispatch = useAppDispatch();
   const toggled = useAppSelector(
-    (state) => state.ui.modals.splashModal.toggled
+    (state) => state.ui.navigation.splashToggled
   );
   const splashClass = toggled
     ? `${styles.splash} ${styles.open}`
