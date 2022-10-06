@@ -3,17 +3,22 @@ import { createSlice } from '@reduxjs/toolkit';
 interface NavigationState {
   menuOpen: boolean;
   splashToggled: boolean;
+  isDarkMode: boolean;
 }
 
 const initialState: NavigationState = { 
   menuOpen: false ,
-  splashToggled: true
+  splashToggled: true,
+  isDarkMode: false,
 };
 
 export const navigationSlice = createSlice({
   name: 'splash',
   initialState,
   reducers: { 
+    toggleDarkMode: (state) => {
+      state.isDarkMode = !state.isDarkMode;
+    },
     toggleMenu: (state) => {
       state.menuOpen = !state.menuOpen;
     },
@@ -23,6 +28,6 @@ export const navigationSlice = createSlice({
   }
 })
 
-export const { toggleMenu, toggleSplash } = navigationSlice.actions;
+export const { toggleDarkMode, toggleMenu, toggleSplash } = navigationSlice.actions;
 
 export default navigationSlice.reducer

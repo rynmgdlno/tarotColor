@@ -23,7 +23,6 @@ export const ChannelSlider = ({
   const { activeEditor, paletteData } = useAppSelector(
     (state) => state.ui.paletteEditor
   );
-
   const newPaletteData = JSON.parse(JSON.stringify(paletteData));
 
   const onSlider = (e: React.ChangeEvent<HTMLInputElement>): void => {
