@@ -45,3 +45,4 @@ export const getRandomColorString = (hasAlpha: boolean): string => {
     ? `rgba(${getRandomChannelValue()}, ${getRandomChannelValue()}, ${getRandomChannelValue()}, ${getRandomAlpha()})`
     : `rgb(${getRandomChannelValue()}, ${getRandomChannelValue()}, ${getRandomChannelValue()})`;
 };
+

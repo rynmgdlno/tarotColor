@@ -1,17 +1,17 @@
-import { render } from './testUtils';
 import {
   getRandomChannelValue,
   getContrastingColor,
   getHex,
   getRandomColorObj,
-  getRandomColorString,
+  getRandomColorString
 } from './colorUtils';
+import { render } from './testUtils';
 
-export { 
+export {
   getRandomChannelValue,
   getContrastingColor,
   getHex,
   getRandomColorObj,
   getRandomColorString,
   render
- };
+};

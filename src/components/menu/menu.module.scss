@@ -1,6 +1,6 @@
 .menu {
   position: fixed;
-  top: 54px;
+  top: 53px;
   width: 48px;
   height: calc(100vh - 54px);
   display: flex;
@@ -13,10 +13,10 @@
   padding-top: .5rem;
 
   &.closed {
-    right: -54px;
+    right: -48px;
   }
 
   &.open {
-    right: 0;
+    right: 0px;
   }
 }
