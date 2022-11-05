@@ -23,6 +23,9 @@
       "@hooks": [
         "src/hooks"
       ],
+      "@firebase": [
+        "src/firebase"
+      ],
       "@redux": [
         "src/redux"
       ],

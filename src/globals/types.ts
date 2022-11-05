@@ -16,3 +16,17 @@ export interface RGBSet {
 export interface ColorObj extends RGBSet {
   id: number;
 };
+
+export type Palette = ColorObj[];
+
+export type CurrentUser = null | {
+  uid: string;
+  displayName: string;
+  email: string;
+}
+
+export interface PaletteObject {
+  id: string;
+  palette: Palette;
+  name: string;
+}

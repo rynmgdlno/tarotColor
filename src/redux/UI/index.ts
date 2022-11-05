@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import navigation from './navigation/navigationSlice';
+import navigation from './navigation.slice';
 import paletteEditor from './paletteEditor.slice';
 
 export default combineReducers({

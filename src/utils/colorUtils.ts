@@ -25,16 +25,16 @@ export const getRandomChannelValue = (): ChannelValue => {
 };
 
 export const getRandomColorObj = (): ColorObj[] => {
-  const colorObj = [];
+  const colorObjs = [];
   for (let i = 0; i < 5; i++) {
-    colorObj.push({
+    colorObjs.push({
       id: i,
       r: getRandomChannelValue(),
       g: getRandomChannelValue(),
       b: getRandomChannelValue()
     });
   }
-  return colorObj;
+  return colorObjs;
 };
 
 // todo: audit these functions:

@@ -3,12 +3,14 @@ import React from 'react';
 import { Button } from '@components';
 import { SearchIcon, Spinner } from '@svg';
 
-import styles from './header.module.scss'
+import styles from './header.module.scss';
 
-export const SearchBar = () => {
+type SearchBarProps = {
+  fillColor: string;
+};
 
+export const SearchBar = ({ fillColor }: SearchBarProps) => {
   const isLoading = false;
-  const fillColor = 'rgba(0,0,0,.5)';
 
   const showSearch = () => {
     console.log('search toggler');
@@ -25,5 +27,4 @@ export const SearchBar = () => {
       )}
     </>
   );
-}
-
+};
