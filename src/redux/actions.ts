@@ -1,6 +1,11 @@
-import { toggleDarkMode, toggleMenu, toggleSplash } from './UI/navigation.slice';
+import {
+  toggleDarkMode,
+  toggleMenu,
+  toggleSplash,
+  toggleSubMenus
+} from './UI/navigation.slice';
 import { setPaletteData, setActiveEditor } from './UI/paletteEditor.slice';
-import { setCurrentUser, setThirdParty } from './DATA/user.slice'
+import { setCurrentUser, setThirdParty } from './DATA/user.slice';
 import { setSavedPalettes } from './DATA/palettes.slice';
 
 export {
@@ -12,4 +17,5 @@ export {
   toggleDarkMode,
   toggleMenu,
   toggleSplash,
-}
+  toggleSubMenus
+};

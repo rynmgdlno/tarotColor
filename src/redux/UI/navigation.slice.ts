@@ -4,12 +4,14 @@ interface NavigationState {
   menuOpen: boolean;
   splashToggled: boolean;
   isDarkMode: boolean;
+  subMenus: string;
 }
 
 const initialState: NavigationState = { 
-  menuOpen: false ,
+  menuOpen: false,
   splashToggled: true,
   isDarkMode: false,
+  subMenus: 'none'
 };
 
 export const navigationSlice = createSlice({
@@ -24,10 +26,13 @@ export const navigationSlice = createSlice({
     },
     toggleSplash: (state) => {
       state.splashToggled = !state.splashToggled;
+    },
+    toggleSubMenus: (state, action) => {
+      state.subMenus = action.payload;
     }
   }
 })
 
-export const { toggleDarkMode, toggleMenu, toggleSplash } = navigationSlice.actions;
+export const { toggleDarkMode, toggleMenu, toggleSplash, toggleSubMenus } = navigationSlice.actions;
 
 export default navigationSlice.reducer
