@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header, Menu } from '@components';
+import { Header, Menu, ModalContainer } from '@components';
 
 import styles from './layout.module.scss';
 
@@ -14,6 +14,7 @@ export const Layout = ({ children }: Props) => {
       <Header />
       <div className={styles.main}>
         <Menu />
+        <ModalContainer />
         <div className={styles.childContainer}>{children}</div>
       </div>
     </div>

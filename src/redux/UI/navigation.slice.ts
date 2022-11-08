@@ -4,20 +4,20 @@ interface NavigationState {
   menuOpen: boolean;
   splashToggled: boolean;
   isDarkMode: boolean;
-  subMenus: string;
+  currentModal: string | null;
 }
 
-const initialState: NavigationState = { 
+const initialState: NavigationState = {
   menuOpen: false,
   splashToggled: true,
   isDarkMode: false,
-  subMenus: 'none'
+  currentModal: 'none'
 };
 
 export const navigationSlice = createSlice({
   name: 'splash',
   initialState,
-  reducers: { 
+  reducers: {
     toggleDarkMode: (state) => {
       state.isDarkMode = !state.isDarkMode;
     },
@@ -27,12 +27,13 @@ export const navigationSlice = createSlice({
     toggleSplash: (state) => {
       state.splashToggled = !state.splashToggled;
     },
-    toggleSubMenus: (state, action) => {
-      state.subMenus = action.payload;
+    toggleModals: (state, action) => {
+      state.currentModal = action.payload;
     }
   }
-})
+});
 
-export const { toggleDarkMode, toggleMenu, toggleSplash, toggleSubMenus } = navigationSlice.actions;
+export const { toggleDarkMode, toggleMenu, toggleSplash, toggleModals } =
+  navigationSlice.actions;
 
-export default navigationSlice.reducer
+export default navigationSlice.reducer;

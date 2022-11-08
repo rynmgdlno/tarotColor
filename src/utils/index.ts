@@ -5,6 +5,7 @@ import {
   getRandomColorObj,
   getRandomColorString
 } from './colorUtils';
+import { validateEmail } from './formUtils';
 import { render } from './testUtils';
 
 export {
@@ -13,5 +14,6 @@ export {
   getHex,
   getRandomColorObj,
   getRandomColorString,
-  render
+  render,
+  validateEmail
 };

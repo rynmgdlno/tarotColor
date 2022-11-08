@@ -1,0 +1,26 @@
+.modal {
+  position: absolute;
+  bottom: 0;
+  left: -100vw;
+  width: calc(100vw - (calc(var(--menu-width) + var(--modal-gap))));
+  height: calc(calc(var(--vh, 1vh) * 100) - calc(var(--header-height) + var(--modal-gap)));
+  background-color: var(--bg-color-main);
+
+  transition: left var(--animation-time) ease-in;
+
+
+  &.open {
+    left: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    width: var(--modal-width);
+    left: 100vw;
+
+    &.open {
+      left: calc(100vw - var(--modal-width) - var(--modal-gap) - var(--menu-width));
+    }
+  }
+}

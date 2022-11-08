@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '@redux';
-import { setActiveEditor, toggleMenu } from '@actions';
+import { setActiveEditor, toggleMenu, toggleModals } from '@actions';
 import { getContrastingColor, getHex } from '@utils';
 
 import { RGBSet } from '@types';
@@ -12,17 +12,14 @@ type ColorProps = {
   rgb: RGBSet;
 };
 
-export const Color = ({
-  id,
-  rgb
-}: ColorProps): React.ReactElement => {
+export const Color = ({ id, rgb }: ColorProps): React.ReactElement => {
   const dispatch = useAppDispatch();
   const currentEditor = useAppSelector(
     (state) => state.ui.paletteEditor.activeEditor
   );
-  const menuOpen = useAppSelector(
-    (state) => state.ui.navigation.menuOpen
-  );
+  const modalIsOpen =
+    useAppSelector((state) => state.ui.navigation.currentModal) !== 'none';
+  const menuIsOpen = useAppSelector((state) => state.ui.navigation.menuOpen);
   const { r, g, b } = rgb;
   const colorStyle = { backgroundColor: `rgb(${r}, ${g}, ${b})` };
   const hex = getHex({ r, g, b });
@@ -30,7 +27,8 @@ export const Color = ({
 
   const toggleEditor = (id: number): void => {
     dispatch(setActiveEditor(currentEditor === id ? null : id));
-    if (menuOpen) dispatch(toggleMenu());
+    if (menuIsOpen) dispatch(toggleMenu());
+    if (modalIsOpen) dispatch(toggleModals('none'));
     // todo: hide search field
   };
 

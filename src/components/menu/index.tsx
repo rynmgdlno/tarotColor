@@ -1,7 +1,6 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '@redux';
-import { toggleSubMenus } from '@actions';
-// import { toggleDarkMode } from '@actions';
+import { toggleModals } from '@actions';
 import { useTheme } from '@hooks';
 
 import { Button } from '@components';
@@ -16,7 +15,8 @@ export const Menu = () => {
   const fillColor = isDarkMode ? 'rgba(255,255,255,.5)' : 'rgba(0,0,0,.5)';
 
   const menuToggled = useAppSelector((state) => state.ui.navigation.menuOpen);
-  const activeSubMenu = useAppSelector((state) => state.ui.navigation.subMenus);
+  const activeSubMenu = useAppSelector((state) => state.ui.navigation.currentModal);
+  
   const menuClass = menuToggled
     ? `${styles.menu} ${styles.open}`
     : `${styles.menu} ${styles.closed}`;
@@ -26,16 +26,16 @@ export const Menu = () => {
   };
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>, input: string) => {
-    if (activeSubMenu === 'none') {
-      dispatch(toggleSubMenus(input))
+    if (activeSubMenu === input) {
+      dispatch(toggleModals(null))
     } else {
-      dispatch(toggleSubMenus('none'))
+      dispatch(toggleModals(input))
     }
   }
 
   return (
     <div className={menuClass}>
-      <Button className={styles.button} onClick={e => handleClick(e, 'user')}>
+      <Button className={styles.button} onClick={e => handleClick(e, 'account')}>
         <UserIcon fillColor={fillColor} className={styles.userIcon} />
       </Button>
       <Button className={styles.button} onClick={e => handleClick(e, 'open')}>

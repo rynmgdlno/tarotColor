@@ -19,6 +19,11 @@
   --palette-border: #757575;
   --search-field-bg: #fff;
   --search-field-border: #ddd;
+  /* dimensions */
+  --header-height: 54px;
+  --menu-width: 48px;
+  --modal-gap: 2px;
+  --modal-width: 350px;
   /* time */
   --animation-time: 0.07s;
   --spinner-time: 2s;
@@ -49,5 +54,5 @@ span,
 p,
 label {
   font-family: 'Myriad Pro', sans-serif;
-  /* color: var(--text-color-main) */
+  color: var(--text-color-main)
 }

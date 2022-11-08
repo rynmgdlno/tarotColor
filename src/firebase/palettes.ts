@@ -86,7 +86,6 @@ export const refreshPalettes = async (
       });
     } catch (error) {
       if (error instanceof Error) {
-        console.error(error);
         return error;
       }
     }

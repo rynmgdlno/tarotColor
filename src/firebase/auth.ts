@@ -7,7 +7,30 @@ import { CurrentUser } from '@types';
 // Google Sign In
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
+
+export const signInWithGoogle = async (): Promise<Error | void> => {
+  try {
+    await auth.signInWithPopup(googleProvider);
+  } catch (err) {
+    if (err instanceof Error) {
+      return err;
+    }
+  }
+};
+
+// Email/Password Sign In
+export const signInWithEmail = async (
+  email: string,
+  password: string
+): Promise<Error | void> => {
+  try {
+    await auth.signInWithEmailAndPassword(email, password);
+  } catch (err) {
+    if (err instanceof Error) {
+      return err;
+    }
+  }
+};
 
 // Add User Document to DB on Authentication
 export const createUserProfileDocument = async (
