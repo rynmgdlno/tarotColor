@@ -1,0 +1,65 @@
+.inputContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  width: 100%;
+
+  input[type=text],
+  input[type=email],
+  input[type=password] {
+    appearance: none;
+    height: 30px;
+    border: 1px solid var(--form-border-color);
+    color: var(--form-text-color);
+    background-color: var(--form-bg-color);
+    font-size: 1rem;
+    padding: 0 .5rem;
+    
+    &:focus {
+      border: 1px solid var(--form-border-focus-color);
+      outline: none;
+    }
+
+    &.error {
+      border-color: var(--form-border-error-color);
+    }
+
+    &.search {
+      transition: all var(--animation-time) ease-in-out;
+      position: absolute;
+      left: 10px;
+      margin-bottom: 0;
+      width: 45%;
+      opacity: 1;
+      border: 1px solid var(--search-field-border);
+      background-color: var(--search-field-bg);
+
+      &.search-active {
+        left: -110px;
+        width: 0%;
+        opacity: 0;
+      }
+    }
+  }
+
+  label {
+    color: grey;
+    font-size: 12px;
+  }
+
+  .check {
+    position: absolute;
+    right: -45px;
+    bottom: -44px;
+    margin: 3rem;
+    fill: grey;
+    background-color: transparent;
+    opacity: .3;
+
+    &.valid {
+      fill: green;
+      opacity: .7;
+    }
+  }
+}

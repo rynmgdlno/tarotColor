@@ -46,11 +46,23 @@ export const SignIn = ({ styles }: Props) => {
     }
   }, [email, password]);
 
+  // ! delete
+  const showSearch = () => {
+    console.log('search toggler');
+  };
+
+  const fillColor = 'transparent';
+  const errorFields = 'none'
+
   return (
-    <div className={styles.signIn}>
-      <p>Hello! Sign in or create an account.</p>
+    <div className={styles.subModal}>
+      <p>
+        Hello! If you would like to save palettes please sign in or create an
+        account.
+      </p>
       <form onSubmit={handleSubmit}>
         <Input
+          autocomplete="email"
           className={''}
           placeholder="email"
           label="email"
@@ -59,9 +71,11 @@ export const SignIn = ({ styles }: Props) => {
           onChange={handleChange}
           value={email}
           error={clicked && !email}
-          isValid={!email}
+          fillColor={fillColor}
+          isValid={!!email && validateEmail(email)}
         />
         <Input
+          autocomplete="password"
           className={''}
           placeholder="password"
           label="password"
@@ -70,24 +84,32 @@ export const SignIn = ({ styles }: Props) => {
           onChange={handleChange}
           value={password}
           error={clicked && !password}
-          isValid={!password && password.length < 7}
+          fillColor={'var(--bg-color-main'}
+          isValid={!!password && password.length > 7}
         />
       </form>
-      {clicked && isSubmitDisabled && (
-        <p className="alert">Please fill out the form correctly.</p>
-      )}
       <Button
         onClick={
           !isSubmitDisabled ? () => handleSubmit() : () => setClicked(true)
         }
-        className={isSubmitDisabled ? 'disabled-button' : undefined}
+        className={'accountButton'}
+        isEnabled={!isSubmitDisabled}
       >
-        Sign In
+        <p>Sign In</p>
       </Button>
-      <Button onClick={signInWithGoogle} className="google-button">
-        Sign In with
-        <GoogleIcon className="btn-icn" />
+      <Button onClick={signInWithGoogle} className="accountButton">
+        <p>Sign In with</p>
+        <GoogleIcon />
       </Button>
+      <Button onClick={showSearch} className="accountButton">
+        <p>Create New Account</p>
+      </Button>
+      {clicked && isSubmitDisabled && (
+        <p className="alert">
+          There is an error in the form. Please check the {errorFields} field(s)
+          and try again.
+        </p>
+      )}
     </div>
   );
 };

@@ -1,49 +1,59 @@
 import React, { ChangeEventHandler } from 'react';
 
-import {CheckIcon} from '@svg';
+import { CheckIcon } from '@svg';
+
+import styles from './formInput.module.scss';
 
 type InputProps = {
-  name: string;
-  type: string;
-  placeholder: string;
+  autocomplete: string;
   className: string;
-  value: string;
-  isValid: boolean;
   error: boolean;
-  label: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-}
-
-type SelectProps = { className: string }
-
-type TextAreaProps = { 
-  className: string;
+  fillColor: string;
   isValid: boolean;
+  label: string;
+  name: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  placeholder: string;
+  type: string;
+  value: string;
+};
+
+type SelectProps = { className: string };
+
+type TextAreaProps = {
+  className: string;
   error: string;
+  fillColor: string;
+  isValid: boolean;
   label: string;
   name: string;
   onChange: ChangeEventHandler<HTMLTextAreaElement>;
   placeholder: string;
   value: string;
-}
+};
 
 export const Input = ({
-  name,
-  type,
-  placeholder,
+  autocomplete,
   className,
-  value,
+  // error,
+  fillColor,
   isValid,
-  error,
   label,
+  name,
   onChange,
+  placeholder,
+  type,
+  value,
   ...props
 }: InputProps) => {
-  const checkClass = isValid ? 'check' : 'checkValidated';
+  const checkClass = isValid
+    ? `${styles.check} ${styles.valid}`
+    : `${styles.check}`;
   return (
-    <div className="inputContainer">
+    <div className={styles.inputContainer}>
       <label htmlFor={name}>{label}</label>
       <input
+        autoComplete={autocomplete}
         id={name}
         name={name}
         type={type}
@@ -51,14 +61,14 @@ export const Input = ({
         value={value}
         className={className}
         onChange={onChange}
-        style={
-          error
-            ? { border: 'solid 1px var(--error)' }
-            : { border: 'solid 1px rgb(11, 21, 26)' }
-        }
+        // style={
+        //   error
+        //     ? { border: 'solid 1px var(--error)' }
+        //     : { border: 'solid 1px var(--form-border-color' }
+        // }
         {...props}
       />
-      <CheckIcon fillColor="rgb(183, 0, 0)" className={checkClass} />
+      <CheckIcon fillColor={fillColor} className={checkClass} />
     </div>
   );
 };
@@ -80,7 +90,7 @@ export const TextArea = ({
 }: TextAreaProps) => {
   const checkClass = isValid ? 'check' : 'checkValidated';
   return (
-    <div className='inputContainer'>
+    <div className={styles.textAreaContainer}>
       <label htmlFor={name}>{label}</label>
       <textarea
         id={name}

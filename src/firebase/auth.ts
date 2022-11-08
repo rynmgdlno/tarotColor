@@ -110,9 +110,9 @@ export const useFirebaseAuth = async (
           } else {
             dispatch(setThirdParty(user.providerData[0].providerId));
           }
-        } else {
-          dispatch(setCurrentUser(null));
         }
+      } else {
+        dispatch(setCurrentUser(null));
       }
     });
     return () => unsubscribe();

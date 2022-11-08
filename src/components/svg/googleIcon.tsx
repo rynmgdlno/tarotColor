@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './svg.module.scss';
 
-export const GoogleIcon = ({ className }: Props) => {
+export const GoogleIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       width="16"
       height="16"
-      className={`${styles.icon} ${className}`}
+      className={styles.googleButtonIcon}
     >
       <g transform="matrix(1, 0, 0, 1, 27.009001, -39.238998)">
         <path

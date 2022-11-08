@@ -5,6 +5,9 @@ import { auth, useFirebaseAuth } from '@firebase';
 
 import styles from './app.module.scss';
 
+import 'normalize.css';
+import './globals/globals.css';
+
 const vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 

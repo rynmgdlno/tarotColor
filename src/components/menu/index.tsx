@@ -35,19 +35,19 @@ export const Menu = () => {
 
   return (
     <div className={menuClass}>
-      <Button className={styles.button} onClick={e => handleClick(e, 'account')}>
+      <Button className={'menuButton'} onClick={e => handleClick(e, 'account')}>
         <UserIcon fillColor={fillColor} className={styles.userIcon} />
       </Button>
-      <Button className={styles.button} onClick={e => handleClick(e, 'open')}>
+      <Button className={'menuButton'} onClick={e => handleClick(e, 'open')}>
         <OpenIcon fillColor={fillColor} className={styles.openIcon} />
       </Button>
-      <Button className={styles.button} onClick={e => handleClick(e, 'save')}>
+      <Button className={'menuButton'} onClick={e => handleClick(e, 'save')}>
         <SaveIcon fillColor={fillColor} className={styles.saveIcon} />
       </Button>
-      <Button className={styles.button} onClick={handleTheme}>
+      <Button className={'menuButton'} onClick={handleTheme}>
         <ThemeIcon fillColor={fillColor} className={styles.themeIcon} />
       </Button>
-      <Button className={styles.button} onClick={e => handleClick(e, 'help')}>
+      <Button className={'menuButton'} onClick={e => handleClick(e, 'help')}>
         <HelpIcon fillColor={fillColor} className={styles.helpIcon} />
       </Button>
     </div>
